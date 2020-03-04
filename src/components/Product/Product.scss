@@ -3,14 +3,14 @@
   .imagewrapper {
     position: relative;
     &__image {
-      width: 200px;
+      width: 220px;
       height: 150px;
       border-radius: 5px;
       position: relative;
       position: relative;
     }
     &__sold {
-      width: 200px;
+      width: 220px;
       height: 150px;
       border-radius: 5px;
       opacity: 0.35;
@@ -21,8 +21,8 @@
       font-weight: bold;
       font-size: 18px;
       position: absolute;
-      top: 35%;
-      left: 35%;
+      top: 33%;
+      left: 33%;
     }
   }
   .title,
