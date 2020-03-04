@@ -1,25 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import Product from '../Product'
-import PropTypes from 'prop-types'
 
-const AvailableProducts = () => {
-  const [products, setProducts] = useState([])
-
-  const fetchData = async () => {
-    const response = await fetch(
-      'https://5c78274f6810ec00148d0ff1.mockapi.io/api/v1/products'
-    )
-    response
-      .json()
-      .then(response => setProducts(response))
-      .catch(error => console.log(error, 'No Available Products'))
-  }
+const AvailableProducts = ({ products, setCount }) => {
+  const filteredProducts = products.filter(({ sold }) => sold === true)
 
   useEffect(() => {
-    fetchData()
-  }, [])
-
-  const filteredProducts = products.filter(({ sold }) => sold === true)
+    if (filteredProducts) {
+      setCount(filteredProducts.length)
+    }
+  }, [setCount, filteredProducts])
 
   return filteredProducts.map(({ id, title, brand, size, price, img }) => {
     return (
@@ -33,10 +22,6 @@ const AvailableProducts = () => {
       />
     )
   })
-}
-
-AvailableProducts.propTypes = {
-  result: PropTypes.number,
 }
 
 export default AvailableProducts
