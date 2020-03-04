@@ -1,11 +1,11 @@
 import React from 'react'
 
-import ProductsList from './components/ProductsList'
+import ProductsWrapper from './pages/ProductsWrapper'
 
 const App = () => {
   return (
     <div className="App">
-      <ProductsList />
+      <ProductsWrapper />
     </div>
   )
 }
