@@ -1,5 +1,7 @@
 import React, { useState, lazy, Suspense } from 'react'
 
+import './ProductsWrapper.scss'
+
 const AvailableProducts = lazy(() =>
   import('../../components/AvailableProducts')
 )
@@ -13,14 +15,16 @@ const ProductsWrapper = () => {
   }
 
   return (
-    <div>
+    <>
       <button onClick={handleClick}>
         {isSold ? 'Hide sold items' : 'Show sold items'}
       </button>
-      <Suspense fallback={'Loading..'}>
-        {!isSold ? <AvailableProducts /> : <AllProducts />}
-      </Suspense>
-    </div>
+      <div className="wrapper">
+        <Suspense fallback={'Loading..'}>
+          {!isSold ? <AvailableProducts /> : <AllProducts />}
+        </Suspense>
+      </div>
+    </>
   )
 }
 export default ProductsWrapper

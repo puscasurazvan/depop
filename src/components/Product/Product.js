@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import './Product.scss'
+
 const Product = ({
   productTitle,
   productBrand,
@@ -9,8 +11,12 @@ const Product = ({
   imageURL,
 }) => {
   return (
-    <div>
-      <img src={imageURL} alt="" />
+    <div className="productWrapper">
+      <img
+        src={imageURL}
+        alt="product display"
+        className="productWrapper__image"
+      />
       <p> {productTitle}</p>
       <p> {productBrand}</p>
       <p> {productSize}</p>

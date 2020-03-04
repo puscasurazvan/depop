@@ -1,5 +1,7 @@
 import React from 'react'
 
+import './App.scss'
+
 import ProductsWrapper from './pages/ProductsWrapper'
 
 const App = () => {
