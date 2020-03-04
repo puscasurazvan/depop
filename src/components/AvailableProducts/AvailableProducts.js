@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Product from '../Product'
+import PropTypes from 'prop-types'
 
 const AvailableProducts = () => {
   const [products, setProducts] = useState([])
@@ -18,20 +19,24 @@ const AvailableProducts = () => {
     fetchData()
   }, [])
 
-  return products
-    .filter(({ sold }) => sold === true)
-    .map(({ id, title, brand, size, price, img }) => {
-      return (
-        <Product
-          key={id}
-          productTitle={title}
-          imageURL={img}
-          productBrand={brand || 'No brand specified'}
-          productSize={size}
-          productPrice={price}
-        />
-      )
-    })
+  const filteredProducts = products.filter(({ sold }) => sold === true)
+
+  return filteredProducts.map(({ id, title, brand, size, price, img }) => {
+    return (
+      <Product
+        key={id}
+        productTitle={title}
+        imageURL={img}
+        productBrand={brand}
+        productSize={size}
+        productPrice={price}
+      />
+    )
+  })
+}
+
+AvailableProducts.propTypes = {
+  result: PropTypes.number,
 }
 
 export default AvailableProducts

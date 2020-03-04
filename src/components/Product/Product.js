@@ -25,6 +25,10 @@ const Product = ({
   )
 }
 
+Product.defaultProps = {
+  productBrand: 'No brand specified',
+}
+
 Product.propTypes = {
   imageURL: PropTypes.string.isRequired,
   productTitle: PropTypes.string.isRequired,
