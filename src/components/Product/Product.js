@@ -9,24 +9,32 @@ const Product = ({
   productSize,
   productPrice,
   imageURL,
+  sold,
 }) => {
   return (
     <div className="productWrapper">
-      <img
-        src={imageURL}
-        alt="product display"
-        className="productWrapper__image"
-      />
-      <p> {productTitle}</p>
-      <p> {productBrand}</p>
-      <p> {productSize}</p>
-      <p> {productPrice}</p>
+      <div className="imagewrapper">
+        <img
+          src={imageURL}
+          alt="product display"
+          className={sold ? 'imagewrapper__sold' : 'imagewrapper__image'}
+          lazy="loading"
+        />
+        {sold && <p className="imagewrapper__soldText">SOLD</p>}
+      </div>
+      <p className="title"> {productTitle}</p>
+      <p className="brand"> {productBrand}</p>
+      <p className="size"> {productSize}</p>
+      <p className="price"> {productPrice}</p>
     </div>
   )
 }
 
 Product.defaultProps = {
+  productTitle: 'No description specified',
   productBrand: 'No brand specified',
+  productSize: 'No size specified',
+  productPrice: 'Negotiable',
 }
 
 Product.propTypes = {

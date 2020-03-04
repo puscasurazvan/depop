@@ -24,7 +24,7 @@ const ProductsWrapper = () => {
 
   useEffect(() => {
     fetchData()
-  })
+  }, [])
 
   const handleClick = () => {
     setIsSold(!isSold)
@@ -32,10 +32,12 @@ const ProductsWrapper = () => {
 
   return (
     <>
-      <button onClick={handleClick}>
-        {isSold ? 'Hide sold items' : 'Show sold items'}
-      </button>
-      <p>{count} Results</p>
+      <div className="header">
+        <p>{count} Results</p>
+        <button className="button" onClick={handleClick}>
+          {isSold ? 'Hide sold items' : 'Show sold items'}
+        </button>
+      </div>
       <div className="wrapper">
         <Suspense fallback={'Loading..'}>
           {!isSold ? (

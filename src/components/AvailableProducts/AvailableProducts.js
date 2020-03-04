@@ -10,18 +10,20 @@ const AvailableProducts = ({ products, setCount }) => {
     }
   }, [setCount, filteredProducts])
 
-  return filteredProducts.map(({ id, title, brand, size, price, img }) => {
-    return (
-      <Product
-        key={id}
-        productTitle={title}
-        imageURL={img}
-        productBrand={brand}
-        productSize={size}
-        productPrice={price}
-      />
-    )
-  })
+  return filteredProducts.map(
+    ({ id, title, brand, size, price, img, sold }) => {
+      return (
+        <Product
+          key={id}
+          productTitle={title}
+          imageURL={img}
+          productBrand={brand}
+          productSize={size}
+          productPrice={price}
+        />
+      )
+    }
+  )
 }
 
 export default AvailableProducts

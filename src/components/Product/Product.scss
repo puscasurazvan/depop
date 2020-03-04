@@ -1,8 +1,36 @@
 .productWrapper {
   margin: 25px;
-  &__image {
-    width: 200px;
-    height: 150px;
-    border-radius: 5px;
+  .imagewrapper {
+    position: relative;
+    &__image {
+      width: 200px;
+      height: 150px;
+      border-radius: 5px;
+      position: relative;
+      position: relative;
+    }
+    &__sold {
+      width: 200px;
+      height: 150px;
+      border-radius: 5px;
+      opacity: 0.35;
+    }
+    &__soldText {
+      color: white;
+      text-shadow: 1px 1px rgb(155, 155, 155);
+      font-weight: bold;
+      font-size: 18px;
+      position: absolute;
+      top: 35%;
+      left: 35%;
+    }
+  }
+  .like-button .title,
+  .brand,
+  .size,
+  .price {
+    margin: 0;
+    font-weight: bold;
+    font-size: 18px;
   }
 }
