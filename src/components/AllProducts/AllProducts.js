@@ -1,4 +1,7 @@
 import React, { useEffect } from 'react'
+
+import PropTypes from 'prop-types'
+
 import Product from '../Product'
 
 const AllProducts = ({ products, setCount }) => {
@@ -23,6 +26,11 @@ const AllProducts = ({ products, setCount }) => {
       />
     )
   })
+}
+
+AllProducts.propTypes = {
+  products: PropTypes.array.isRequired,
+  setCount: PropTypes.func,
 }
 
 export default AllProducts

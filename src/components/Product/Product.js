@@ -25,7 +25,7 @@ const Product = ({
       <p className="title"> {productTitle}</p>
       <p className="brand"> {productBrand}</p>
       <p className="size"> {productSize}</p>
-      <p className="price"> {productPrice}</p>
+      <p className="price"> £{productPrice}</p>
     </div>
   )
 }
@@ -34,7 +34,7 @@ Product.defaultProps = {
   productTitle: 'No description specified',
   productBrand: 'No brand specified',
   productSize: 'No size specified',
-  productPrice: 'Negotiable',
+  productPrice: 12,
 }
 
 Product.propTypes = {
