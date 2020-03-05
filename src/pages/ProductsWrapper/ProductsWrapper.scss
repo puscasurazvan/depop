@@ -1,7 +1,6 @@
 .wrapper {
   background-color: rgb(235, 235, 235);
-  width: 85%;
-  min-height: 70vh;
+  width: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,6 +9,7 @@
 
   @media screen and (min-width: 650px) {
     display: grid;
+    align-items: initial;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto;
   }
@@ -21,13 +21,17 @@
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: auto;
   }
+  @media screen and (min-width: 1920px) {
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: auto;
+  }
 }
 
 .header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 80%;
+  width: 60%;
   .button {
     width: 120px;
     height: 40px;

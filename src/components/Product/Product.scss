@@ -1,7 +1,8 @@
 .productWrapper {
   margin: 25px;
+  position: relative;
+  width: 220px;
   .imagewrapper {
-    position: relative;
     &__image {
       width: 220px;
       height: 150px;
@@ -21,8 +22,8 @@
       font-weight: bold;
       font-size: 18px;
       position: absolute;
-      top: 33%;
-      left: 33%;
+      top: 20%;
+      left: 35%;
     }
   }
   .title,
