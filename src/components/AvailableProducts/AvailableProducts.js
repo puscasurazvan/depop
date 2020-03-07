@@ -1,10 +1,20 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Product from '../Product'
 
 import PropTypes from 'prop-types'
 
-const AvailableProducts = ({ products, setCount }) => {
+const AvailableProducts = ({ products, setCount, setLikes }) => {
   const filteredProducts = products.filter(({ sold }) => sold === true)
+  const [productLikes, setProductLikes] = useState([])
+
+  const addProductLikes = title => {
+    const newArray = [...productLikes, title]
+    setProductLikes(newArray)
+  }
+
+  useEffect(() => {
+    setLikes(productLikes)
+  }, [productLikes, setLikes])
 
   useEffect(() => {
     if (filteredProducts) {
@@ -22,6 +32,7 @@ const AvailableProducts = ({ products, setCount }) => {
           productBrand={brand}
           productSize={size}
           productPrice={price}
+          addProductLikes={addProductLikes}
         />
       )
     }

@@ -2,6 +2,8 @@ import React, { useEffect, useState, lazy, Suspense } from 'react'
 
 import './ProductsWrapper.scss'
 
+import like from '../../assets/like.svg'
+
 const AvailableProducts = lazy(() =>
   import('../../components/AvailableProducts')
 )
@@ -9,8 +11,10 @@ const AllProducts = lazy(() => import('../../components/AllProducts'))
 
 const ProductsWrapper = () => {
   const [isSold, setIsSold] = useState(true)
-  const [count, setCount] = useState(null)
+  const [results, setResults] = useState(null)
+  const [likes, setLikes] = useState([])
   const [products, setProducts] = useState([])
+  const [showList, setShowList] = useState(false)
 
   const fetchData = async () => {
     const response = await fetch(
@@ -28,26 +32,61 @@ const ProductsWrapper = () => {
 
   const handleClick = () => {
     setIsSold(!isSold)
+    setLikes([])
   }
 
   return (
-    <>
-      <div className="header">
-        <p>{count} Results</p>
-        <button className="button" onClick={handleClick}>
-          {isSold ? 'Hide sold items' : 'Show sold items'}
-        </button>
-      </div>
+    <div className="productsWrapper">
+      <Suspense fallback={null}>
+        <div className="header">
+          <p>{results} Results</p>
+          <button className="button" onClick={handleClick}>
+            {isSold ? 'Hide sold items' : 'Show sold items'}
+          </button>
+          {
+            <button
+              className="results-button"
+              onClick={() => setShowList(!showList)}
+            >
+              <img
+                src={like}
+                alt="liked products results"
+                className="results-button__svg"
+              />
+              {likes.length}
+              {likes.length !== 0 && showList && (
+                <ul className="liked-products-list">
+                  {likes.map((likedProduct, index) => {
+                    return (
+                      <li className="liked-products-list__item" key={index}>
+                        {likedProduct}
+                      </li>
+                    )
+                  })}
+                </ul>
+              )}
+            </button>
+          }
+        </div>
+      </Suspense>
       <div className="wrapper">
-        <Suspense fallback={'Loading..'}>
+        <Suspense fallback={'Loading...'}>
           {!isSold ? (
-            <AvailableProducts products={products} setCount={setCount} />
+            <AvailableProducts
+              products={products}
+              setCount={setResults}
+              setLikes={setLikes}
+            />
           ) : (
-            <AllProducts products={products} setCount={setCount} />
+            <AllProducts
+              products={products}
+              setCount={setResults}
+              setLikes={setLikes}
+            />
           )}
         </Suspense>
       </div>
-    </>
+    </div>
   )
 }
 export default ProductsWrapper

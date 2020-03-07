@@ -1,11 +1,21 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import PropTypes from 'prop-types'
 
 import Product from '../Product'
 
-const AllProducts = ({ products, setCount }) => {
+const AllProducts = ({ products, setCount, setLikes }) => {
+  const [productLikes, setProductLikes] = useState([])
   const allProducts = products.map(item => item)
+
+  const addProductLikes = title => {
+    const newArray = [...productLikes, title]
+    setProductLikes(newArray)
+  }
+
+  useEffect(() => {
+    setLikes(productLikes)
+  }, [productLikes, setLikes])
 
   useEffect(() => {
     if (allProducts) {
@@ -20,9 +30,10 @@ const AllProducts = ({ products, setCount }) => {
         key={id}
         productTitle={title}
         imageURL={img}
-        productBrand={brand || 'No brand specified'}
+        productBrand={brand}
         productSize={size}
         productPrice={price}
+        addProductLikes={addProductLikes}
       />
     )
   })

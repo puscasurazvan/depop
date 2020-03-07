@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
 
 import './App.scss'
 
-import ProductsWrapper from './pages/ProductsWrapper'
+const ProductsWrapper = lazy(() => import('./pages/ProductsWrapper'))
 
 const App = () => {
   return (
     <div className="App">
-      <ProductsWrapper />
+      <Suspense fallback={'Loading...'}>
+        <ProductsWrapper />
+      </Suspense>
     </div>
   )
 }

@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+
+import like from '../../assets/like.svg'
 
 import './Product.scss'
 
@@ -10,7 +12,16 @@ const Product = ({
   productPrice,
   imageURL,
   sold,
+  handleLike,
+  addProductLikes,
 }) => {
+  const [liked, setLiked] = useState(false)
+
+  const handleLiked = productTitle => {
+    setLiked(!liked)
+    addProductLikes(productTitle)
+  }
+
   return (
     <div className="productWrapper">
       <div className="imagewrapper">
@@ -26,6 +37,12 @@ const Product = ({
       <p className="brand"> {productBrand}</p>
       <p className="size"> {productSize}</p>
       <p className="price"> £{productPrice}</p>
+      <button
+        onClick={() => handleLiked(productTitle)}
+        className={liked ? 'button liked' : 'button'}
+      >
+        <img src={like} className="like" alt="" />
+      </button>
     </div>
   )
 }
