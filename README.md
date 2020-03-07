@@ -15,3 +15,8 @@
 ## ✅ SASS
 
 - SASS(BEM naming convention)
+
+## ✅ Things to do:
+
+- Add like functionality for products
+
